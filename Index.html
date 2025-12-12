@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OKHAI MEMON PADEL TOURNAMENT 2025 — Group Winners</title>
+<style>
+  :root {
+    --bg: #020617;
+    --card-bg: #020617;
+    --border-subtle: #1f2937;
+    --accent: #0ea5e9;
+    --accent-soft: rgba(56,189,248,0.06);
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --winner-bg: rgba(16,185,129,0.06);
+    --winner-border: #10b981;
+    --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+      radial-gradient(circle at top left, #0b1120 0, #020617 40%, #020617 100%);
+    color: var(--text-main);
+    padding: 18px;
+    padding-bottom: 70px; /* space so footer doesn't cover content */
+    display: flex;
+    justify-content: center;
+  }
+
+  .shell { width: 100%; max-width: 1300px; }
+
+  /* Page heading */
+  .page-heading {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .page-heading h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .page-heading h2 {
+    margin: 4px 0 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .page-heading .sub-line {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Winners summary card */
+  .winners-card {
+    background:
+      radial-gradient(circle at top left, #0ea5e9 0, #0b1120 40%, #020617 90%);
+    border-radius: 18px;
+    padding: 12px 16px;
+    border: 1px solid rgba(148,163,184,0.5);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 20px;
+  }
+
+  .winners-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .winners-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .winners-badge {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(15,23,42,0.7);
+    background: rgba(15,23,42,0.85);
+  }
+
+  .winners-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .winners-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    margin-top: 8px;
+  }
+
+  .winners-table th,
+  .winners-table td {
+    border: 1px solid rgba(15,23,42,0.85);
+    padding: 6px 8px;
+    text-align: left;
+  }
+
+  .winners-table thead th {
+    background: rgba(15,23,42,0.95);
+    color: #e5e7eb;
+    text-align: center;
+  }
+
+  .winners-table tbody tr:nth-child(odd) {
+    background: rgba(15,23,42,0.96);
+  }
+
+  .winners-table tbody tr:nth-child(even) {
+    background: rgba(15,23,42,0.9);
+  }
+
+  .winners-table td.group-col {
+    width: 70px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .winners-table td.team-col {
+    min-width: 160px;
+  }
+
+  /* Groups grid */
+  .groups-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  @media (max-width: 1000px) {
+    .groups-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .group-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-soft);
+    padding: 12px 12px 14px;
+  }
+
+  .group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .group-header h3 {
+    margin: 0;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .chip {
+    font-size: 0.7rem;
+    padding: 2px 7px;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,0.55);
+    background: rgba(15,23,42,0.9);
+  }
+
+  .group-sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .config {
+    margin-bottom: 8px;
+    padding: 8px 9px;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background: linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.96));
+  }
+
+  .config-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    align-items: center;
+  }
+
+  .config label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .config input {
+    padding: 4px 7px;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,0.6);
+    background: rgba(15,23,42,0.98);
+    color: var(--text-main);
+    font-size: 0.78rem;
+    outline: none;
+    min-width: 110px;
+  }
+
+  .config input::placeholder { color: rgba(148,163,184,0.7); }
+
+  .config input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px rgba(56,189,248,0.5);
+  }
+
+  .helper {
+    font-size: 0.73rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .helper code {
+    background: rgba(15,23,42,0.9);
+    padding: 2px 4px;
+    border-radius: 5px;
+    border: 1px solid rgba(55,65,81,0.9);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.78rem;
+  }
+
+  th, td {
+    border: 1px solid var(--border-subtle);
+    padding: 5px 5px;
+    text-align: center;
+  }
+
+  thead th {
+    background: radial-gradient(circle at top, rgba(15,23,42,0.9) 0, #020617 80%);
+    color: #e5e7eb;
+    font-weight: 500;
+  }
+
+  .match-label {
+    text-align: left;
+    font-weight: 500;
+    padding-left: 6px;
+  }
+
+  td input {
+    width: 100%;
+    max-width: 65px;
+    padding: 3px 5px;
+    border-radius: 999px;
+    border: 1px solid rgba(55,65,81,0.9);
+    background: #020617;
+    color: var(--text-main);
+    font-size: 0.76rem;
+    text-align: center;
+    outline: none;
+  }
+
+  td input::placeholder { color: rgba(148,163,184,0.5); }
+
+  td input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px rgba(56,189,248,0.5);
+  }
+
+  .winner-cell {
+    min-width: 90px;
+    font-size: 0.75rem;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+    gap: 6px;
+  }
+
+  button {
+    background: linear-gradient(135deg, #0ea5e9, #22c55e);
+    color: white;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 7px 18px rgba(34,197,94,0.35);
+  }
+
+  button span.icon { font-size: 0.9rem; }
+
+  button:hover {
+    filter: brightness(1.06);
+    box-shadow: 0 11px 22px rgba(34,197,94,0.45);
+  }
+
+  button.secondary {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+    box-shadow: none;
+    padding-inline: 10px;
+  }
+
+  button.secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .standings-note {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin: 5px 0;
+  }
+
+  .standings-table {
+    margin-top: 4px;
+  }
+
+  .top-team {
+    background: var(--winner-bg) !important;
+    border: 1px solid var(--winner-border);
+    box-shadow: 0 0 0 1px rgba(16,185,129,0.5);
+  }
+
+  .top-team td:first-child::before {
+    content: "★";
+    color: #fde68a;
+    margin-right: 3px;
+    font-size: 0.75rem;
+  }
+
+  .rank-col { width: 32px; }
+
+  .team-col-standings {
+    text-align: left;
+    padding-left: 6px;
+  }
+
+  /* Footer (fixed bottom) */
+  .footer-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    padding: 10px 12px;
+    text-align: center;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    color: #e5e7eb;
+    background: linear-gradient(90deg, #0ea5e9 0%, #0b1120 60%, #020617 100%);
+    border-top: 1px solid rgba(148,163,184,0.35);
+    box-shadow: 0 -4px 18px rgba(0,0,0,0.35);
+  }
+
+  .footer-bar a {
+    color: #f1f5f9;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .footer-bar a:hover {
+    text-decoration: underline;
+    color: #38bdf8;
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- PAGE HEADING -->
+  <div class="page-heading">
+    <h1><strong>OKHAI MEMON PADEL TOURNAMENT 2025</strong></h1>
+    <h2><strong>GROUP WINNERS TABLE</strong></h2>
+    <div class="sub-line">Race to 4 • Best of 3 • Win = 3 points • No head-to-head rule</div>
+  </div>
+
+  <!-- WINNERS SUMMARY CARD -->
+  <section class="winners-card">
+    <div class="winners-header">
+      <h3>
+        Group Winners Overview
+        <span class="winners-badge">Live summary of top teams from Groups A–H</span>
+      </h3>
+      <div class="winners-note">
+        After calculating each group, the winning team will appear here automatically.
+      </div>
+    </div>
+    <table class="winners-table">
+      <thead>
+        <tr>
+          <th>Group</th>
+          <th>Qualified Team</th>
+          <th>Points</th>
+          <th>Sets ±</th>
+          <th>Games ±</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows A–H -->
+        <tr>
+          <td class="group-col">Group A</td>
+          <td class="team-col" id="summaryTeam-0">TBD</td>
+          <td id="summaryPts-0">-</td>
+          <td id="summarySets-0">-</td>
+          <td id="summaryGames-0">-</td>
+        </tr>
+        <tr>
+          <td class="group-col">Group B</td>
+          <td class="team-col" id="summaryTeam-1">TBD</td>
+          <td id="summaryPts-1">-</td>
+          <td id="summarySets-1">-</td>
+          <td id="summaryGames-1">-</td>
+        </tr>
+        <tr>
+          <td class="group-col">Group C</td>
+          <td class="team-col" id="summaryTeam-2">TBD</td>
+          <td id="summaryPts-2">-</td>
+          <td id="summarySets-2">-</td>
+          <td id="summaryGames-2">-</td>
+        </tr>
+        <tr>
+          <td class="group-col">Group D</td>
+          <td class="team-col" id="summaryTeam-3">TBD</td>
+          <td id="summaryPts-3">-</td>
+          <td id="summarySets-3">-</td>
+          <td id="summaryGames-3">-</td>
+        </tr>
+        <tr>
+          <td class="group-col">Group E</td>
+          <td class="team-col" id="summaryTeam-4">TBD</td>
+          <td id="summaryPts-4">-</td>
+          <td id="summarySets-4">-</td>
+          <td id="summaryGames-4">-</td>
+        </tr>
+        <tr>
+          <td class="group-col">Group F</td>
+          <td class="team-col" id="summaryTeam-5">TBD</td>
+          <td id="summaryPts-5">-</td>
+          <td id="summarySets-5">-</td>
+          <td id="summaryGames-5">-</td>
+        </tr>
+        <tr>
+          <td class="group-col">Group G</td>
+          <td class="team-col" id="summaryTeam-6">TBD</td>
+          <td id="summaryPts-6">-</td>
+          <td id="summarySets-6">-</td>
+          <td id="summaryGames-6">-</td>
+        </tr>
+        <tr>
+          <td class="group-col">Group H</td>
+          <td class="team-col" id="summaryTeam-7">TBD</td>
+          <td id="summaryPts-7">-</td>
+          <td id="summarySets-7">-</td>
+          <td id="summaryGames-7">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- GROUPS GRID -->
+  <section class="groups-grid">
+    <!-- GROUP A (index 0) -->
+    <div class="group-card" id="groupCard-0">
+      <div class="group-header">
+        <h3 id="groupHeading-0">HUSSAINABAD COURT KINGS <span class="chip">Match Entry &amp; Standings</span></h3>
+        <div class="group-sub">Use race-to-4, best-of-3 sets format.</div>
+      </div>
+      <div class="config">
+        <div class="config-row" style="margin-bottom:4px;">
+          <label>
+            Group name
+            <input id="groupName-0" type="text" value="HUSSAINABAD COURT KINGS" placeholder="Group A">
+          </label>
+        </div>
+        <div class="config-row">
+          <label>Team 1
+            <input id="team1-0" type="text" value="Farhan Gaba &amp; Abdul Samad Gaziani" placeholder="Team 1">
+          </label>
+          <label>Team 2
+            <input id="team2-0" type="text" value="Ammar Pasta &amp; A. Rehman Markatiya" placeholder="Team 2">
+          </label>
+          <label>Team 3
+            <input id="team3-0" type="text" value="Usama Gaba &amp; Waqas Gaba" placeholder="Team 3">
+          </label>
+          <label>Team 4
+            <input id="team4-0" type="text" value="Naeem Markatiya &amp; Hassaan Markatiya" placeholder="Team 4">
+          </label>
+        </div>
+      </div>
+      <div class="helper">
+        Enter sets like <code>4-2</code>. Winner is auto-decided by sets (best of 3).
+      </div>
+      <table id="matches-0">
+        <thead>
+          <tr>
+            <th>Match</th>
+            <th>Set 1</th>
+            <th>Set 2</th>
+            <th>Set 3</th>
+            <th>Winner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 6 matches per group -->
+          <tr>
+            <td class="match-label"></td>
+            <td><input placeholder="4-2"></td>
+            <td><input placeholder="4-3"></td>
+            <td><input></td>
+            <td class="winner-cell">—</td>
+          </tr>
+          <tr>
+            <td class="match-label"></td>
+            <td><input></td><td><input></td><td><input></td>
+            <td class="winner-cell">—</td>
+          </tr>
+          <tr>
+            <td class="match-label"></td>
+            <td><input></td><td><input></td><td><input></td>
+            <td class="winner-cell">—</td>
+          </tr>
+          <tr>
+            <td class="match-label"></td>
+            <td><input></td><td><input></td><td><input></td>
+            <td class="winner-cell">—</td>
+          </tr>
+          <tr>
+            <td class="match-label"></td>
+            <td><input></td><td><input></td><td><input></td>
+            <td class="winner-cell">—</td>
+          </tr>
+          <tr>
+            <td class="match-label"></td>
+            <td><input></td><td><input></td><td><input></td>
+            <td class="winner-cell">—</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="actions">
+        <button class="secondary" type="button" onclick="resetGroup(0)">
+          <span class="icon">↺</span> Reset Group
+        </button>
+        <button type="button" onclick="calculateGroup(0)">
+          <span class="icon">⚡</span> Calculate Group
+        </button>
+      </div>
+      <div class="standings-note">
+        Ranking: points → set difference → game difference → total sets &amp; games won.
+      </div>
+      <div class="standings-table">
+        <table id="standings-0">
+          <thead>
+            <tr>
+              <th class="rank-col">#</th>
+              <th class="team-col-standings">Team</th>
+              <th>Pts</th>
+              <th>Sets ±</th>
+              <th>Games ±</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- GROUP B (index 1) -->
+    <div class="group-card" id="groupCard-1">
+      <div class="group-header">
+        <h3 id="groupHeading-1">SOCIETY RALLY MASTERS <span class="chip">Match Entry &amp; Standings</span></h3>
+        <div class="group-sub">Use race-to-4, best-of-3 sets format.</div>
+      </div>
+      <div class="config">
+        <div class="config-row" style="margin-bottom:4px;">
+          <label>Group name
+            <input id="groupName-1" type="text" value="SOCIETY RALLY MASTERS" placeholder="Group B">
+          </label>
+        </div>
+        <div class="config-row">
+          <label>Team 1
+            <input id="team1-1" type="text" value="Farhan Vayani &amp; Shakil Ghaziani" placeholder="Team 1">
+          </label>
+          <label>Team 2
+            <input id="team2-1" type="text" value="Iqbal Gaba &amp; Raheel Gabrani" placeholder="Team 2">
+          </label>
+          <label>Team 3
+            <input id="team3-1" type="text" value="Osama Gaziani &amp; Dawood Gaziani" placeholder="Team 3">
+          </label>
+          <label>Team 4
+            <input id="team4-1" type="text" value="Yusuf Toberiya &amp; Saad Mangrolia" placeholder="Team 4">
+          </label>
+        </div>
+      </div>
+      <div class="helper">
+        Enter sets like <code>4-2</code>. Winner is auto-decided by sets (best of 3).
+      </div>
+      <table id="matches-1">
+        <thead>
+          <tr>
+            <th>Match</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Winner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+        </tbody>
+      </table>
+      <div class="actions">
+        <button class="secondary" type="button" onclick="resetGroup(1)">
+          <span class="icon">↺</span> Reset Group
+        </button>
+        <button type="button" onclick="calculateGroup(1)">
+          <span class="icon">⚡</span> Calculate Group
+        </button>
+      </div>
+      <div class="standings-note">Ranking: points → set diff → game diff → total sets &amp; games.</div>
+      <div class="standings-table">
+        <table id="standings-1">
+          <thead>
+            <tr>
+              <th class="rank-col">#</th>
+              <th class="team-col-standings">Team</th>
+              <th>Pts</th>
+              <th>Sets ±</th>
+              <th>Games ±</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- GROUP C (index 2) -->
+    <div class="group-card" id="groupCard-2">
+      <div class="group-header">
+        <h3 id="groupHeading-2">HIGHWAY COURT RIDERS <span class="chip">Match Entry &amp; Standings</span></h3>
+        <div class="group-sub">Use race-to-4, best-of-3 sets format.</div>
+      </div>
+      <div class="config">
+        <div class="config-row" style="margin-bottom:4px;">
+          <label>Group name
+            <input id="groupName-2" type="text" value="HIGHWAY COURT RIDERS" placeholder="Group C">
+          </label>
+        </div>
+        <div class="config-row">
+          <label>Team 1
+            <input id="team1-2" type="text" value="Hashim Vayani &amp; Umaid Gaba" placeholder="Team 1">
+          </label>
+          <label>Team 2
+            <input id="team2-2" type="text" value="Mataf Tooso &amp; Mubeen Pasta" placeholder="Team 2">
+          </label>
+          <label>Team 3
+            <input id="team3-2" type="text" value="Obaid Gatta &amp; Abdul Basit Panjwani" placeholder="Team 3">
+          </label>
+          <label>Team 4
+            <input id="team4-2" type="text" value="A. Raqeeb Gabrani &amp; M. Arsalan Suriya" placeholder="Team 4">
+          </label>
+        </div>
+      </div>
+      <div class="helper">
+        Enter sets like <code>4-2</code>. Winner is auto-decided by sets (best of 3).
+      </div>
+      <table id="matches-2">
+        <thead>
+          <tr>
+            <th>Match</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Winner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+          <tr><td class="match-label"></td><td><input></td><td><input></td><td><input></td><td class="winner-cell">—</td></tr>
+          <tr><td class="match-label"></td><t
